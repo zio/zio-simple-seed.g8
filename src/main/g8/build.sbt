@@ -24,7 +24,7 @@ ThisBuild / developers := List(
 addCommandAlias("fmt", "all scalafmtSbt scalafmt test:scalafmt")
 addCommandAlias("check", "all scalafmtSbtCheck scalafmtCheck test:scalafmtCheck")
 
-lazy val root = (project in file("."))
+lazy val root = (project in file("$name$-core"))
   .settings(
     name := "$name$",
     libraryDependencies ++= Seq(
