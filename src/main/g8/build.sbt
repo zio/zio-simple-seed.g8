@@ -46,11 +46,11 @@ lazy val `$name$-docs` = project
     libraryDependencies ++= Seq(
       `dev.zio`.zio.zio
     ),
-    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(root),
+    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(`$name$-core`),
     ScalaUnidoc / unidoc / target := (LocalRootProject / baseDirectory).value / "website" / "static" / "api",
     cleanFiles += (ScalaUnidoc / unidoc / target).value,
     docusaurusCreateSite := docusaurusCreateSite.dependsOn(Compile / unidoc).value,
     docusaurusPublishGhpages := docusaurusPublishGhpages.dependsOn(Compile / unidoc).value
   )
-  .dependsOn(root)
+  .dependsOn(`$name$-core`)
   .enablePlugins(MdocPlugin, DocusaurusPlugin, ScalaUnidocPlugin)
