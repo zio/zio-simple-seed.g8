@@ -24,7 +24,7 @@ ThisBuild / developers := List(
 addCommandAlias("fmt", "all scalafmtSbt scalafmt test:scalafmt")
 addCommandAlias("check", "all scalafmtSbtCheck scalafmtCheck test:scalafmtCheck")
 
-lazy val root = (project in file("$name$-core"))
+lazy val `$name$-core` = (project in file("$name$-core"))
   .settings(
     name := "$name$",
     libraryDependencies ++= Seq(
@@ -36,7 +36,7 @@ lazy val root = (project in file("$name$-core"))
     testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework"))
   )
 
-lazy val docs = project
+lazy val `$name$-docs` = project
   .in(file("$name$-docs"))
   .settings(
     publish / skip := true,
