@@ -24,7 +24,7 @@ ThisBuild / developers := List(
 addCommandAlias("fmt", "all scalafmtSbt scalafmt test:scalafmt")
 addCommandAlias("check", "all scalafmtSbtCheck scalafmtCheck test:scalafmtCheck")
 
-lazy val root = (project in file("$name$-core"))
+lazy val `$name$-core` = (project in file("$name$-core"))
   .settings(
     name := "$name$",
     libraryDependencies ++= Seq(
@@ -36,7 +36,7 @@ lazy val root = (project in file("$name$-core"))
     testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework"))
   )
 
-lazy val docs = project
+lazy val `$name$-docs` = project
   .in(file("$name$-docs"))
   .settings(
     publish / skip := true,
@@ -46,11 +46,11 @@ lazy val docs = project
     libraryDependencies ++= Seq(
       `dev.zio`.zio.zio
     ),
-    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(root),
+    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(`$name$-core`),
     ScalaUnidoc / unidoc / target := (LocalRootProject / baseDirectory).value / "website" / "static" / "api",
     cleanFiles += (ScalaUnidoc / unidoc / target).value,
     docusaurusCreateSite := docusaurusCreateSite.dependsOn(Compile / unidoc).value,
     docusaurusPublishGhpages := docusaurusPublishGhpages.dependsOn(Compile / unidoc).value
   )
-  .dependsOn(root)
+  .dependsOn(`$name$-core`)
   .enablePlugins(MdocPlugin, DocusaurusPlugin, ScalaUnidocPlugin)
