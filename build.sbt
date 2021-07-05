@@ -1,8 +1,8 @@
-ThisBuild / scalaVersion := "2.12.13"
+ThisBuild / scalaVersion := "2.12.14"
 
 enablePlugins(ScriptedPlugin)
 
-name := "zio-project-seed"
+name := "zio-simple-seed"
 
 addCommandAlias("test", "g8Test")
 
