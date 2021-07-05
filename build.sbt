@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "2.12.13"
+ThisBuild / scalaVersion := "2.12.14"
 
 enablePlugins(ScriptedPlugin)
 
